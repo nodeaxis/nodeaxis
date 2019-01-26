@@ -1,0 +1,78 @@
+{
+  "name": "nodeaxis/nodeaxis",
+  "description": "Nodeaxis: Drupal 8 Destribution (Bootstrap 4 based)",
+  "type": "drupal-profile",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "authors": [
+    {
+      "name": "Mahmoud Zayed",
+      "homepage": "https://www.drupal.org/u/mahmoud-zayed",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "http://drupal.org/project/issues/nodeaxis",
+    "source": "http://cgit.drupalcode.org/nodeaxis"
+  },
+  "config": {
+    "preferred-install": {
+      "drupal/core": "dist"
+    },
+    "platform": {
+      "php": "7.0.8"
+    }
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  },
+  "require": {
+    "cweagans/composer-patches": "^1.6.4",
+    "drupal-composer/drupal-scaffold": "^2.0.0",
+    "oomphinc/composer-installers-extender": "^1.1"
+  },
+  "extra": {
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
+    "installer-paths": {
+      "docroot/core": [
+        "type:drupal-core"
+      ],
+      "docroot/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "docroot/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "docroot/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/contrib/{$name}": [
+        "type:drupal-drush"
+      ]
+    },
+    "enable-patching": true,
+    "patchLevel": {
+      "drupal/core": "-p2"
+    },
+    "composer-exit-on-patch-failure": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Nodeaxis\\composer\\": "src/composer"
+    }
+  },
+  "scripts": {
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
+  }
+}
